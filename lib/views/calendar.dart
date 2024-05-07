@@ -343,7 +343,9 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
     if (widget.isRange) {
       calendarInfo = CalendarInfo(
           firstWeekDay: widget.firstWeekDay,
-          year: yearValue['value'], month: monthValue['value'], thisVsync: this)
+          year: yearValue['value'],
+          month: monthValue['value'],
+          thisVsync: this)
         ..setSelectedBtwDates(
           datesRange: datesRange,
           disabledList: widget.disabledList,
@@ -351,8 +353,10 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
         );
     } else {
       calendarInfo = CalendarInfo(
-        firstWeekDay: widget.firstWeekDay,
-          year: yearValue['value'], month: monthValue['value'], thisVsync: this)
+          firstWeekDay: widget.firstWeekDay,
+          year: yearValue['value'],
+          month: monthValue['value'],
+          thisVsync: this)
         ..setSelectedDates(
           selectedDates: selectedItems!,
           disabledList: widget.disabledList,
@@ -531,19 +535,24 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
         width: width * 0.075,
         height: width * 0.075,
         decoration: BoxDecoration(
-            shape: BoxShape.circle, color: widget.arrowIconAreaColor),
+          shape: BoxShape.circle,
+          color: widget.headerColor,
+        ),
+        // the change is here
         child: Stack(
           children: [
             Center(
-              child: Container(
-                width: width * 0.025,
-                height: width * 0.025,
-                child: CustomPaint(
-                  size: Size(width * 0.01, (width * 0.01 * 1).toDouble()),
-                  painter:
-                      type == 'right' ? RightArrowPaint() : LeftArrowPaint(),
-                ),
+              child: Icon(
+                type == 'left' ? Icons.arrow_back_ios : Icons.arrow_forward_ios,
+                color: Colors.white,
+                size: 15,
               ),
+
+              // child: CustomPaint(
+              //   size: Size(width * 0.01, (width * 0.01 * 1).toDouble()),
+              //   painter:
+              //       type == 'right' ? RightArrowPaint() : LeftArrowPaint(),
+              // ),
             ),
           ],
         ),
